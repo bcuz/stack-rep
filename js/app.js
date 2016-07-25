@@ -66,7 +66,6 @@ var getUnanswered = function(tags) {
 	})
 	.done(function(result){ //this waits for the ajax to return with a succesful promise object
 		var searchResults = showSearchResults(request.tagged, result.items.length);
-
 		$('.search-results').html(searchResults);
 		//$.each is a higher order function. It takes an array and a function as an argument.
 		//The function is executed once for each item in the array.
@@ -90,7 +89,7 @@ var topPeeps = function(query) {
 		order: 'desc',
 		sort: 'creation'
 	};
-
+	// http://api.stackexchange.com/2.2/tags/{tag}/top-answerers/
 	$.ajax({
 		url: "http://api.stackexchange.com/2.2/questions/unanswered",
 		data: request,
