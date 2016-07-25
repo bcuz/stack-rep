@@ -81,8 +81,8 @@ var getUnanswered = function(tags) {
 	});
 };
 
-var topPeeps = function() {
-
+var topPeeps = function(query) {
+	console.log(query);
 }
 
 
@@ -99,6 +99,9 @@ $(document).ready( function() {
 
 	$(".inspiration-getter").submit(function(e) {
 		e.preventDefault();
+
+		var query = $("input[name='answerers']").val();
+		topPeeps(query)
 
 	})
 });
