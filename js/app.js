@@ -96,5 +96,10 @@ $(document).ready( function() {
 		var tags = $(this).find("input[name='tags']").val();
 		getUnanswered(tags);
 	});
+
+	$(".inspiration-getter").submit(function(e) {
+		e.preventDefault();
+
+	})
 });
 
