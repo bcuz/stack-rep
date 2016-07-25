@@ -82,8 +82,6 @@ var getUnanswered = function(tags) {
 };
 
 var topPeeps = function(query) {
-	console.log(query);
-
 
 		// the parameters we need to pass in our request to StackOverflow's API
 	var request = {
