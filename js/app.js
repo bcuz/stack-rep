@@ -80,7 +80,7 @@ var getUnanswered = function(tags) {
 	});
 };
 
-var topPeeps = function(query) {
+var topPeeps = function(tag) {
 
 		// the parameters we need to pass in our request to StackOverflow's API
 	var request = {
@@ -128,8 +128,8 @@ $(document).ready( function() {
 	$(".inspiration-getter").submit(function(e) {
 		e.preventDefault();
 
-		var query = $("input[name='answerers']").val();
-		topPeeps(query)
+		var tag = $("input[name='answerers']").val();
+		topPeeps(tag)
 
 	})
 });
