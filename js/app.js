@@ -91,7 +91,7 @@ var topPeeps = function(tag) {
 	};
 	// http://api.stackexchange.com/2.2/tags/{tag}/top-answerers/
 	$.ajax({
-		url: "http://api.stackexchange.com/2.2/questions/unanswered",
+		url: tagged_url,
 		data: request,
 		dataType: "jsonp",//use jsonp to avoid cross origin issues
 		type: "GET",
