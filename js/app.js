@@ -89,7 +89,6 @@ var topPeeps = function(tag) {
 		// order: 'desc',
 		// sort: 'creation'
 	};
-	// http://api.stackexchange.com/2.2/tags/{tag}/top-answerers/
 	$.ajax({
 		url: tagged_url,
 		data: request,
