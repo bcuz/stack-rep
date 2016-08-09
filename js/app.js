@@ -81,7 +81,7 @@ var getUnanswered = function(tags) {
 };
 
 var topPeeps = function(tag) {
-
+	tagged_url = 'http://api.stackexchange.com/2.2/tags/' + tag + '/top-answerers/'
 		// the parameters we need to pass in our request to StackOverflow's API
 	var request = {
 		// tagged: tags,
