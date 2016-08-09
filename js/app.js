@@ -97,9 +97,9 @@ var topPeeps = function(tag) {
 	})
 	.done(function(result){ //this waits for the ajax to return with a succesful promise object
 		console.log(result.items);
-		// var searchResults = showSearchResults(request.tagged, result.items.length);
+		var searchResults = showSearchResults(tag, result.items.length);
 
-		// $('.search-results').html(searchResults);
+		$('.search-results').html(searchResults);
 		// //$.each is a higher order function. It takes an array and a function as an argument.
 		// //The function is executed once for each item in the array.
 		// $.each(result.items, function(i, item) {
