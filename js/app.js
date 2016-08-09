@@ -84,10 +84,10 @@ var topPeeps = function(tag) {
 
 		// the parameters we need to pass in our request to StackOverflow's API
 	var request = {
-		tagged: tags,
-		site: 'stackoverflow',
-		order: 'desc',
-		sort: 'creation'
+		// tagged: tags,
+		site: 'stackoverflow'
+		// order: 'desc',
+		// sort: 'creation'
 	};
 	// http://api.stackexchange.com/2.2/tags/{tag}/top-answerers/
 	$.ajax({
