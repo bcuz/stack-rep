@@ -16,6 +16,9 @@ var showAnswerers = function(user) {
 	var postsElem = result.find(".posts")
 	postsElem.text(user.post_count)
 
+	var postsElem = result.find(".type")
+	postsElem.text(user.user.user_type)
+
 	return result;
 }
 
@@ -146,6 +149,8 @@ $(document).ready( function() {
 	});
 
 	$(".inspiration-getter").submit(function(e) {
+
+		$('.results').html('');
 		e.preventDefault();
 
 		var tag = $("input[name='answerers']").val();
