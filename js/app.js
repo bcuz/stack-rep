@@ -3,8 +3,8 @@
 var showAnswerers = function(user) {
 	var result = $('.templates .answers').clone();
 
-	answerElem = result.find("p");
-	answerElem.text(user.post_count)
+	var userElem = result.find(".user");
+	userElem.text(user.user.display_name)
 
 	return result;
 }
