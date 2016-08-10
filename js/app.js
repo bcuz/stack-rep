@@ -1,6 +1,11 @@
 // this function takes the question object returned by the StackOverflow request
 // and returns new result to be appended to DOM
-var showAnswerers = function(user) {
+
+
+
+
+$(document).ready( function() {
+	var showAnswerers = function(user) {
 	var result = $('.templates .answers').clone();
 
 	var userElem = result.find(".user a");
@@ -135,10 +140,6 @@ var topPeeps = function(tag) {
 		$('.search-results').append(errorElem);
 	});
 }
-
-
-
-$(document).ready( function() {
 	$('.unanswered-getter').submit( function(e){
 		e.preventDefault();
 		// zero out results if previous search has run
