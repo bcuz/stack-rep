@@ -1,10 +1,29 @@
 // this function takes the question object returned by the StackOverflow request
 // and returns new result to be appended to DOM
+var showAnswerers = function(user) {
+	var result = $('.templates .answers').clone();
+
+	var userElem = result.find(".user a");
+	userElem.attr('href', user.user.link)
+	userElem.text(user.user.display_name)
+
+	var repElem = result.find(".reputation");
+	repElem.text(user.user.reputation)
+
+	var scoreElem = result.find(".score")
+	scoreElem.text(user.score)
+
+	var postsElem = result.find(".posts")
+	postsElem.text(user.post_count)
+
+	return result;
+}
+
 var showQuestion = function(question) {
-	
+
 	// clone our result template code
 	var result = $('.templates .question').clone();
-	
+
 	// Set the question properties in result
 	var questionElem = result.find('.question-text a');
 	questionElem.attr('href', question.link);
@@ -49,15 +68,15 @@ var showError = function(error){
 // takes a string of semi-colon separated tags to be searched
 // for on StackOverflow
 var getUnanswered = function(tags) {
-	
+
 	// the parameters we need to pass in our request to StackOverflow's API
-	var request = { 
+	var request = {
 		tagged: tags,
 		site: 'stackoverflow',
 		order: 'desc',
 		sort: 'creation'
 	};
-	
+
 	$.ajax({
 		url: "http://api.stackexchange.com/2.2/questions/unanswered",
 		data: request,
@@ -65,8 +84,8 @@ var getUnanswered = function(tags) {
 		type: "GET",
 	})
 	.done(function(result){ //this waits for the ajax to return with a succesful promise object
+		// console.log(result.items);
 		var searchResults = showSearchResults(request.tagged, result.items.length);
-
 		$('.search-results').html(searchResults);
 		//$.each is a higher order function. It takes an array and a function as an argument.
 		//The function is executed once for each item in the array.
@@ -81,6 +100,40 @@ var getUnanswered = function(tags) {
 	});
 };
 
+var topPeeps = function(tag) {
+	tagged_url = 'http://api.stackexchange.com/2.2/tags/' + tag + '/top-answerers/all_time'
+		// the parameters we need to pass in our request to StackOverflow's API
+	var request = {
+		// tagged: tags,
+		site: 'stackoverflow'
+		// order: 'desc',
+		// sort: 'creation'
+	};
+	$.ajax({
+		url: tagged_url,
+		data: request,
+		dataType: "jsonp",//use jsonp to avoid cross origin issues
+		type: "GET",
+	})
+	.done(function(result){ //this waits for the ajax to return with a succesful promise object
+		console.log(result.items);
+		var searchResults = showSearchResults(tag, result.items.length);
+
+		$('.search-results').html(searchResults);
+		// //$.each is a higher order function. It takes an array and a function as an argument.
+		// //The function is executed once for each item in the array.
+		$.each(result.items, function(i, item) {
+			var answer = showAnswerers(item);
+			$('.results').append(answer);
+		});
+	})
+	.fail(function(jqXHR, error){ //this waits for the ajax to return with an error promise object
+		var errorElem = showError(error);
+		$('.search-results').append(errorElem);
+	});
+}
+
+
 
 $(document).ready( function() {
 	$('.unanswered-getter').submit( function(e){
@@ -91,4 +144,13 @@ $(document).ready( function() {
 		var tags = $(this).find("input[name='tags']").val();
 		getUnanswered(tags);
 	});
+
+	$(".inspiration-getter").submit(function(e) {
+		e.preventDefault();
+
+		var tag = $("input[name='answerers']").val();
+		topPeeps(tag)
+
+	})
 });
+
