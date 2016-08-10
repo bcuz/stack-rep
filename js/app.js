@@ -86,7 +86,7 @@ var getUnanswered = function(tags) {
 	};
 
 	$.ajax({
-		url: "http://api.stackexchange.com/2.2/questions/unanswered",
+		url: "https://api.stackexchange.com/2.2/questions/unanswered",
 		data: request,
 		dataType: "jsonp",//use jsonp to avoid cross origin issues
 		type: "GET",
@@ -109,7 +109,7 @@ var getUnanswered = function(tags) {
 };
 
 var topPeeps = function(tag) {
-	tagged_url = 'http://api.stackexchange.com/2.2/tags/' + tag + '/top-answerers/all_time'
+	tagged_url = 'https://api.stackexchange.com/2.2/tags/' + tag + '/top-answerers/all_time'
 		// the parameters we need to pass in our request to StackOverflow's API
 	var request = {
 		// tagged: tags,
