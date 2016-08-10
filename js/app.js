@@ -3,7 +3,8 @@
 var showAnswerers = function(user) {
 	var result = $('.templates .answers').clone();
 
-	var userElem = result.find(".user");
+	var userElem = result.find(".user a");
+	userElem.attr('href', user.user.link)
 	userElem.text(user.user.display_name)
 
 	var repElem = result.find(".reputation");
