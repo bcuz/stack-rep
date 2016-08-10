@@ -1,7 +1,9 @@
 // this function takes the question object returned by the StackOverflow request
 // and returns new result to be appended to DOM
-var showAnswerers = function() {
+var showAnswerers = function(user) {
 	var result = $('.templates .answers').clone();
+
+	$(".answers").append(user.postcount)
 }
 
 var showQuestion = function(question) {
