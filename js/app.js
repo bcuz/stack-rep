@@ -6,6 +6,12 @@ var showAnswerers = function(user) {
 	var userElem = result.find(".user");
 	userElem.text(user.user.display_name)
 
+	var repElem = result.find(".reputation");
+	repElem.text(user.user.reputation)
+
+	var scoreElem = result.find(".score")
+	scoreElem.text(user.score)
+
 	return result;
 }
 
