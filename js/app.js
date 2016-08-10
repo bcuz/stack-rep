@@ -13,6 +13,9 @@ var showAnswerers = function(user) {
 	var scoreElem = result.find(".score")
 	scoreElem.text(user.score)
 
+	var postsElem = result.find(".posts")
+	postsElem.text(user.post_count)
+
 	return result;
 }
 
