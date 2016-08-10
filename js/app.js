@@ -1,8 +1,6 @@
 // this function takes the question object returned by the StackOverflow request
 // and returns new result to be appended to DOM
 var showAnswerers = function(user) {
-		// $(".results").empty();
-	// $(".results-container").empty();
 	var result = $('.templates .answers').clone();
 
 	var userElem = result.find(".user a");
@@ -153,7 +151,6 @@ $(document).ready( function() {
 	$(".inspiration-getter").submit(function(e) {
 
 		$('.results').html('');
-	// $(".results-container").empty();
 		e.preventDefault();
 
 		var tag = $("input[name='answerers']").val();
