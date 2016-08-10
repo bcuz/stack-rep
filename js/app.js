@@ -123,8 +123,8 @@ var topPeeps = function(tag) {
 		// //$.each is a higher order function. It takes an array and a function as an argument.
 		// //The function is executed once for each item in the array.
 		$.each(result.items, function(i, item) {
-			var question = showAnswerers(item);
-			$('.results').append(question);
+			var answer = showAnswerers(item);
+			$('.results').append(answer);
 		});
 	})
 	.fail(function(jqXHR, error){ //this waits for the ajax to return with an error promise object
